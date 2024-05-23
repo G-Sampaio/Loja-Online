@@ -54,6 +54,9 @@
             <th scope="col">Id</th>
             <th scope="col">Nome</th>
             <th scope="col">Idade</th>
+            <button type="button" class="btn btn-success">Editar</button>
+            <button type="button" class="btn btn-danger">Remover</button>
+            
             
           </tr>
         </thead>
@@ -62,6 +65,17 @@
             <td th:text="${users.id}"></td>
 			<td th:text="${users.nome}"></td>
 			<td th:text="${users.idade}"></td>
+			
+			<td colspan="2"><a class="btn btn-info btn-sm"
+				th:href="@{/lista/editar/{id}(id=${users.id})}" role="button"><span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
+				</a>
+					<button id="btn/users/excluir/1" type="button"
+						class="btn btn-danger btn-sm" data-toggle="modal"
+						data-target="#mymodal">
+						<span class="oi oi-circle-x" title="Excluir"
+							aria-hidden="true"></span>
+					</button></td>
+			
           </tr>
         </tbody>
       </table>

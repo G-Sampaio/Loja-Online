@@ -50,11 +50,11 @@
     
       <div class="container">
 
-              <form action="/administrativo/usuarios/salvar" method="POST">
+              <form action="/administrativo/usuarios/salvar" th:object="${users}" method="POST">
                 <div class="form-row">
                   <div class="form-group col-md-6">
                     <label for="nome">Nome</label>
-                    <input type="text" class="form-control" id="nome" placeholder="Nome" name="nome">
+                    <input type="text" class="form-control" id="nome" placeholder="Nome" th:field="*{nome}">
                   </div>
                   <!-- <div class="form-group col-md-6">
                     <label for="inputPassword4">Senha</label>
@@ -63,7 +63,7 @@
                 </div>
                 <div class="form-group">
                   <label for="idade">Idade</label>
-                  <input type="text" class="form-control" id="idade" placeholder="Idade" name="idade">
+                  <input type="text" class="form-control" id="idade" placeholder="Idade" th:field="*{idade}">
                 </div>
                 <!-- <div class="form-row">
                   <div class="form-group col-md-6">
@@ -90,7 +90,8 @@
                     </label>
                   </div>
                 </div> -->
-                <button href="/administrativo/usuarios/salvar" type="submit" class="btn btn-primary">Entrar</button>
+                <input type="hidden" id="id" th:field"*{id}" value=""/>
+                <button href="/administrativo/usuarios/salvar" type="submit" class="btn btn-primary">Salvar</button>
               </form>
       </div>
 
