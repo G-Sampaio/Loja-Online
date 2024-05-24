@@ -41,6 +41,13 @@ public class controller {
 		Optional<users> user = usersRepositories.findById(id);
 		return acessarCadastro(user.get());
 	}
+	
+	@GetMapping("/lista/excluir/{id}")
+	public ModelAndView excluirUser(@PathVariable("id")Long id) {
+		Optional<users> user = usersRepositories.findById(id);
+		return acessarCadastro(user.get());
+	
+	}
 	@PostMapping("/administrativo/usuarios/salvar")
 	public ModelAndView salvar(users users, BindingResult result) {
 		if(result.hasErrors()) {
