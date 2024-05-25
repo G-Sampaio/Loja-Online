@@ -42,10 +42,11 @@ public class controller {
 		return acessarCadastro(user.get());
 	}
 	
-	@GetMapping("/lista/excluir/{id}")
-	public ModelAndView excluirUser(@PathVariable("id")Long id) {
+	@GetMapping("/lista/remover/{id}")
+	public ModelAndView removerUser(@PathVariable("id")Long id) {
 		Optional<users> user = usersRepositories.findById(id);
-		return acessarCadastro(user.get());
+		usersRepositories.delete(user.get());
+		return acessarLista();
 	
 	}
 	@PostMapping("/administrativo/usuarios/salvar")
