@@ -2,6 +2,7 @@
 <html lang="pt-br">
   <head>
     <!-- Meta tags Obrigatórias -->
+    <!-- CADASTRO DE PRODUTOS -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -61,22 +62,33 @@
                     <input type="text" class="form-control" id="categoria" placeholder="Categoria" th:field="*{categoria}">
                   </div>
                 </div>
-                <div class="form-group">
+                
+                <div class="form-row">
+                 <div class="form-group col-md-6">
                   <label for="marca">Marca</label>
-                  <input type="text" class="form-control" id="marca" placeholder="marca" th:field="*{marca}">
+                  <input type="text" class="form-control" id="marca" placeholder="Marca" th:field="*{marca}">
+                 </div>
                 </div>
+                
                 <div class="form-row">
                   <div class="form-group col-md-6">
                     <label for="valor">Valor de venda</label>
                     <input type="text" class="form-control" id="categoria" placeholder="Valor de Venda" th:field="*{valorVenda}">
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="descricao">Descrição</label>
-                  <input type="text" class="form-control" id="descricao" placeholder="Descrição" th:field="*{descricao}">
-                </div>
+                
+                <div class="form-row">
+				  <div class="form-group col-md-6">	
+	                  <label for="descricao">Descrição</label>
+	                  <input type="text" class="form-control" id="descricao" placeholder="Descrição" th:field="*{descricao}">
+	               </div>
+                 </div>
                 
                 
+                <input type="hidden" id="id" th:field="*{id}" value=""/>
+                <button href="/administrativo/produtos/salvar" type="submit" class="btn btn-primary">Salvar</button>
+              </form>
+     		 </div>
                 
                 <!-- <div class="form-group col-md-6">
                     <label for="inputPassword4">Senha</label>
@@ -108,10 +120,7 @@
                     </label>
                   </div>
                 </div> -->
-                <input type="hidden" id="id" th:field="*{id}" value=""/>
-                <button href="/administrativo/produtos/salvar" type="submit" class="btn btn-primary">Salvar</button>
-              </form>
-      </div>
+
 
     <!-- JavaScript (Opcional) -->
     <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
