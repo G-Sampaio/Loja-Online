@@ -25,26 +25,28 @@ public class produtoController {
 		return mv;
 	}
 	
-//	@GetMapping("/produtos/lista")
-//	public ModelAndView acessarProduto() {
-//		ModelAndView mv = new ModelAndView("administrativo/produtos/lista");
-//		mv.addObject("listaProduto", produtoRepositories.findAll());
-//		return mv;
-//	}
-//	
-//	@GetMapping("/produtos/lista/editar/{id}")
-//	public ModelAndView editarProduto(@PathVariable("id")Long id) {
-//		Optional<produto> produto = produtoRepositories.findById(id);
-//		return cadastrarProduto(produto.get());
-//	}
-//	
-//	@GetMapping("/produtos/lista/remover/{id}")
-//	public ModelAndView removerProduto(@PathVariable("id")Long id) {
-//		Optional<produto> produto = produtoRepositories.findById(id);
-//		produtoRepositories.delete(produto.get());
-//		return acessarProduto();
+	@GetMapping("/produtos/lista")
+	public ModelAndView acessarProduto() {
+		ModelAndView mv = new ModelAndView("administrativo/produtos/lista");
+		mv.addObject("listaProduto", produtoRepositories.findAll());
+		return mv;
+	}
 	
-//	}
+	
+	@GetMapping("/produtos/lista/editar/{id}")
+	public ModelAndView editarProduto(@PathVariable("id")Long id) {
+		Optional<produto> produto = produtoRepositories.findById(id);
+		return cadastrarProduto(produto.get());
+	}
+	
+	@GetMapping("/produtos/lista/remover/{id}")
+	public ModelAndView removerProduto(@PathVariable("id")Long id) {
+		Optional<produto> produto = produtoRepositories.findById(id);
+		produtoRepositories.delete(produto.get());
+		return acessarProduto();
+	
+	}
+	
 	@PostMapping("/administrativo/produtos/salvar")
 	public ModelAndView salvar(produto produtos, BindingResult result) {
 		if(result.hasErrors()) {

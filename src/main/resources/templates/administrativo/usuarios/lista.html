@@ -1,59 +1,53 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+  <head>
+    <!-- Meta tags Obrigatórias -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<head>
-	<!-- Meta tags Obrigatórias -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	<style src="/src/main/resources/static/css/style.css"></style>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-	<title>Loja Paraná</title>
-</head>
-
-<body>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<img src="https://cdn.freebiesupply.com/logos/large/2x/parana-clube-de-curitiba-pr-logo-png-transparent.png"
-			width="30" height="30" alt="">
-		<a class="navbar-brand" href="/administrativo"> Loja Paraná</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado"
-			aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-
-		<div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active">
-					<a class="nav-link" href="#"> Nossa Casa <span class="sr-only">(página atual)</span></a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Link</a>
-				</li>
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Dropdown
-					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="#">Ação</a>
-						<a class="dropdown-item" href="#">Outra ação</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#">Algo mais aqui</a>
-					</div>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link disabled" href="#">Desativado</a>
-				</li>
-			</ul>
-			<form class="form-inline my-2 my-lg-0">
-				<input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
-				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
-			</form>
-		</div>
-	</nav>
+    <title>Loja Paraná</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <img src="https://cdn.freebiesupply.com/logos/large/2x/parana-clube-de-curitiba-pr-logo-png-transparent.png" width="30" height="30" alt="">
+        <a class="navbar-brand" href="/administrativo"> Loja Paraná</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#"> Nossa Casa <span class="sr-only">(página atual)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Produtos
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/produtos">Cadastrar Produto</a>
+                <a class="dropdown-item" href="/cadastro">Cadastrar Funcionário</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="/">Loja</a>
+              </div>
+            </li>
+         <!--   <li class="nav-item">
+              <a class="nav-link disabled" href="#">Desativado</a>
+            </li>-->
+          </ul>
+          <!--<form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+          </form>-->
+        </div>
+      </nav>
 
 	<table class="table">
 		<thead>
@@ -61,6 +55,10 @@
 				<th scope="col">Id</th>
 				<th scope="col">Nome</th>
 				<th scope="col">Idade</th>
+				<th scope="col">E-mail</th>
+				<th scope="col">CEP</th>
+				<th scope="col">Cidade</th>
+				<th scope="col">Endereço</th>
 				<th scope="col">Editar/Remover</th>
 
 
@@ -71,29 +69,28 @@
 				<td th:text="${users.id}"></td>
 				<td th:text="${users.nome}"></td>
 				<td th:text="${users.idade}"></td>
+				<td th:text="${users.email}"></td>
+				<td th:text="${users.CEP}"></td>
+				<td th:text="${users.endereço}"></td>
+				<td th:text="${users.Cidade}"></td>
 
 				<td colspan="2">
 					<a class="btn btn-success btn-sm" th:href="@{/lista/editar/{id}(id=${users.id})}" role="button"><i
 							class="bi bi-pen"></i> Editar<span class="oi--brush" title="Editar"
 							aria-hidden="true"></span>
 					</a>
-					
-					<a class="btn btn-danger btn-sm" th:href="@{/lista/remover/{id}(id=${users.id})}" role="button"><i class="bi bi-eraser-fill"></i>
-						Remover<span class="oi--brush" title="Remover" aria-hidden="true"></span>
-					</a>
-					
+
 					<a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-warning"
 						th:attr="data-target='#modal-warning'+${users.id }">
-						<span class="oi--brush" title="Remover" aria-hidden="true"><i class="bi bi-eraser-fill"></i>Remover</span>
+						<span class="oi--brush" title="Remover" aria-hidden="true"><i class="bi bi-eraser-fill"></i>Remover</span></a>
 					
 					<div class="modal modal-warning fade in" th:id="modal-warning+${users.id}">
 						<div class="modal-dialog">
 							<div class="modal-content">
 								<div class="modal-header">
 									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-										<span aria-hidden="true">×</span></button>
-									
-									<h5 class="modal-title">Remover</h5>
+										<span aria-hidden="true"></span></button>
+									<h5 class="modal-title col-md-1">Sair</h5>
 								</div>
 								<div class="modal-body">
 									<h3>Deseja realmente remover ?</h3>
@@ -101,11 +98,10 @@
 								</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-outline pull-left"
-										data-dismiss="modal">Fechar</button>
+										data-dismiss="modal">Não</button>
 									<a type="button" class="btn btn-outline"
 										th:href="@{/lista/remover/{id}(id=${users.id})}"><i
-										 class="fa fa-check"></i>&nbsp;Yes</a>
-								
+										 class="fa fa-check"></i>&nbsp;Sim</a>
 								</div>
 							</div>
 						</div>
