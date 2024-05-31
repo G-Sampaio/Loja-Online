@@ -2,13 +2,12 @@
 <html lang="pt-br">
   <head>
     <!-- Meta tags Obrigatórias -->
-    <!-- CADASTRO DE PRODUTOS -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-	<style src="/src/main/resources/static/css/style.css"></style>
+	<style src="static/css/style.css"></style>
     <title>Loja Paraná</title>
   </head>
   <body>
@@ -29,31 +28,32 @@
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown
+                Produtos
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Ação</a>
-                <a class="dropdown-item" href="#">Outra ação</a>
+                <a class="dropdown-item" href="/produtos">Cadastrar Produto</a>
+                <a class="dropdown-item" href="/cadastro">Cadastrar Funcionário</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Algo mais aqui</a>
+                <a class="dropdown-item" href="/">Loja</a>
               </div>
             </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#">Desativado</a>
-            </li>
           </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
-          </form>
         </div>
       </nav>
-    
-    
-    
-    <h5>Cadastro de Produtos</h5>
-      <div class="container">
+		
+	  <div class="container-fluid mt-4">
+        <div class="row">
+          <div class="col-md-3">
+            <ul class="list-group">
+              <li class="list-group-item active">Menu</li>
+              <a href="/cadastro" class="list-group-item list-group-item-action">Cadastro</a>
+              <a href="/lista" class="list-group-item list-group-item-action">Lista</a>
+              <a href="/produtos" class="list-group-item list-group-item-action">Cadastro de Produtos</a>
+              <a href="/produtos/lista" class="list-group-item list-group-item-action">Listar Produtos</a>
+            </ul>
+       </div>    
 
+      <div class="col-md">
               <form action="/administrativo/produtos/salvar" th:object="${produto}" method="POST">
                 
                 <div class="form-row">
@@ -88,6 +88,8 @@
                 <input type="hidden" id="id" th:field="*{id}" value=""/>
                 <button href="/administrativo/produtos/salvar" type="submit" class="btn btn-primary">Salvar</button>
               </form>
+      			</div>
+        		</div>
      		 </div>
      		 
 
