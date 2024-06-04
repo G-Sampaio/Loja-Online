@@ -1,4 +1,8 @@
 package br.com.unicuritiba.lojaonline.controller;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,13 +11,20 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.unicuritiba.lojaonline.models.produto;
 import br.com.unicuritiba.lojaonline.repositories.produtoRepository;
+import jakarta.persistence.criteria.Path;
 
 @Controller
 public class produtoController {
+	
+	private static String caminhoimagens = "C:\\Imagens\\";
+	
 	@Autowired
 	private produtoRepository produtoRepositories;
 	
@@ -44,17 +55,43 @@ public class produtoController {
 		Optional<produto> produto = produtoRepositories.findById(id);
 		produtoRepositories.delete(produto.get());
 		return acessarProduto();
-	
 	}
 	
+	@GetMapping("/produtos/lista/mostrarImagem/{imagem}")
+	@ResponseBody
+	public byte[] retornarImagemProduto(@PathVariable("imagem")String imagem) throws IOException {
+		File imagemArquivo = new File(caminhoimagens+imagem);
+		if(imagem!=null || imagem.trim().length()>0) {
+
+			return Files.readAllBytes(imagemArquivo.toPath());
+		}
+		return null;
+	}
+	
+	
 	@PostMapping("/administrativo/produtos/salvar")
-	public ModelAndView salvar(produto produtos, BindingResult result) {
+	public ModelAndView salvar(produto produtos, BindingResult result, 
+			@RequestParam("file") MultipartFile arquivo){
+		
+		
 		if(result.hasErrors()) {
 			return cadastrarProduto(produtos);
 		}
 		produtoRepositories.saveAndFlush(produtos);
+		
+		try {
+			if(!arquivo.isEmpty()) {
+				byte[] bytes = arquivo.getBytes();
+				java.nio.file.Path caminho =  Paths.get(caminhoimagens+String.valueOf(produtos.getId())+arquivo.getOriginalFilename());
+				Files.write(caminho, bytes);
+				
+				produtos.setNomeImagem(String.valueOf(produtos.getId())+arquivo.getOriginalFilename());
+				produtoRepositories.saveAndFlush(produtos);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		return cadastrarProduto(new produto());
-		
-		
+
 	}
 }
