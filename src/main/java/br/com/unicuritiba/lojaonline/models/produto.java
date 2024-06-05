@@ -25,8 +25,15 @@ public class produto implements Serializable {
 	private String categoria;
 	private String marca;
 	private Double quantidade=0.;
+	private String nomeImagem;
 	
 	
+	public String getNomeImagem() {
+		return nomeImagem;
+	}
+	public void setNomeImagem(String nomeImagem) {
+		this.nomeImagem = nomeImagem;
+	}
 	public long getId() {
 		return id;
 	}

@@ -10823,4 +10823,18 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+    .modal-header {
+    border-bottom: 1px solid #dee2e6;
+  }
+  .modal-footer {
+    border-top: 1px solid #dee2e6;
+  }
+  .btn-outline-danger {
+    border-color: #dc3545;
+    color: #dc3545;
+  }
+  .btn-outline-danger:hover {
+    background-color: #dc3545;
+    color: white;
+  }
 }
