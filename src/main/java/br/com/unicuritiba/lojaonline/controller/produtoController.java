@@ -8,6 +8,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,16 +17,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.NoHandlerFoundException;
 
 import br.com.unicuritiba.lojaonline.models.produto;
 import br.com.unicuritiba.lojaonline.repositories.produtoRepository;
 import jakarta.persistence.criteria.Path;
 
 @Controller
+@ControllerAdvice
 public class produtoController {
 	
 	private static String caminhoimagens = "C:\\Imagens\\";
-	
+	@ExceptionHandler(NoHandlerFoundException.class)
+    public ModelAndView handleNotFound(NoHandlerFoundException ex) {
+        return new ModelAndView("redirect:/");
+    }
 	@Autowired
 	private produtoRepository produtoRepositories;
 	
