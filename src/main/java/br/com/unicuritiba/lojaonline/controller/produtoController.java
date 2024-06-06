@@ -21,6 +21,7 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 
 import br.com.unicuritiba.lojaonline.models.produto;
 import br.com.unicuritiba.lojaonline.repositories.produtoRepository;
+import ch.qos.logback.core.model.Model;
 import jakarta.persistence.criteria.Path;
 
 @Controller
@@ -100,5 +101,10 @@ public class produtoController {
 		}
 		return cadastrarProduto(new produto());
 
+	}
+
+	@GetMapping("/compra")
+	public String acessarControllerCompra() {
+		return"administrativo/compra";
 	}
 }
