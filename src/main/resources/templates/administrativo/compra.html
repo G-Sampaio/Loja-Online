@@ -50,11 +50,11 @@
 		                <!--<img class="card-img-top mb-5 mb-md-0" th:src="@{/produtos/lista/mostrarImagem/{imagem}(imagem=${product.nomeImagem})}" width="100" alt="Imagem do Produto" />-->
 		            </div>
 		            <div class="col-md-6">
-		                <h1 class="display-5 fw-bolder">O Preço dos seus sonhos!!</h1>
+		                <h1 class="display-5 fw-bolder" th:text="${produto.descricao}">O Preço dos seus sonhos!!</h1>
 		                <div class="fs-5 mb-5">
 		                    <span>R$ <span th:text="${produto.valorVenda}"></span></span>
 		                </div>
-		               <p class="lead" th:text="${produto.descricao}">Nome do Produto</p>
+		               <p class="lead">Garanta já o seu!</p>
 					   <div class="card-body">
 					       <a href="#" class="btn btn-primary">Comprar</a>
 					     </div>
