@@ -21,7 +21,6 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 
 import br.com.unicuritiba.lojaonline.models.produto;
 import br.com.unicuritiba.lojaonline.repositories.produtoRepository;
-import jakarta.persistence.criteria.Path;
 
 @Controller
 @ControllerAdvice
@@ -64,6 +63,7 @@ public class produtoController {
 		return acessarProduto();
 	}
 	
+	@SuppressWarnings("null")
 	@GetMapping("/produtos/lista/mostrarImagem/{imagem}")
 	@ResponseBody
 	public byte[] retornarImagemProduto(@PathVariable("imagem")String imagem) throws IOException {
@@ -100,5 +100,10 @@ public class produtoController {
 		}
 		return cadastrarProduto(new produto());
 
+	}
+
+	@GetMapping("/compra")
+	public String acessarControllerCompra() {
+		return"administrativo/compra";
 	}
 }
